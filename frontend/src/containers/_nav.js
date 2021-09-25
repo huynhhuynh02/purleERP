@@ -5,7 +5,7 @@ const _nav =  [
   {
     _tag: 'CSidebarNavItem',
     name: 'Dashboard',
-    to: '/dashboard',
+    to: '/admin/dashboard',
     icon: <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon"/>,
     badge: {
       color: 'info',
@@ -14,199 +14,111 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavTitle',
-    _children: ['Theme']
-  },
-  {
-    _tag: 'CSidebarNavItem',
-    name: 'Colors',
-    to: '/theme/colors',
-    icon: 'cil-drop',
-  },
-  {
-    _tag: 'CSidebarNavItem',
-    name: 'Typography',
-    to: '/theme/typography',
-    icon: 'cil-pencil',
-  },
-  {
-    _tag: 'CSidebarNavTitle',
-    _children: ['Components']
+    _children: ['Quản lý']
   },
   {
     _tag: 'CSidebarNavDropdown',
-    name: 'Base',
-    route: '/base',
-    icon: 'cil-puzzle',
+    name: 'Thu chi',
+    route: '/admin/cost',
+    icon: 'cil-money',
     _children: [
       {
         _tag: 'CSidebarNavItem',
-        name: 'Breadcrumb',
-        to: '/base/breadcrumbs',
+        name: 'Tạo phiếu thu',
+        to: '/admin/cost/receipt-vourcher',
       },
       {
         _tag: 'CSidebarNavItem',
-        name: 'Cards',
-        to: '/base/cards',
+        name: 'Tạo phiếu chi',
+        to: '/admin/cost/payment-vourcher',
       },
       {
         _tag: 'CSidebarNavItem',
-        name: 'Carousel',
-        to: '/base/carousels',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Collapse',
-        to: '/base/collapses',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Forms',
-        to: '/base/forms',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Jumbotron',
-        to: '/base/jumbotrons',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'List group',
-        to: '/base/list-groups',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Navs',
-        to: '/base/navs',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Navbars',
-        to: '/base/navbars',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Pagination',
-        to: '/base/paginations',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Popovers',
-        to: '/base/popovers',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Progress',
-        to: '/base/progress-bar',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Switches',
-        to: '/base/switches',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Tables',
-        to: '/base/tables',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Tabs',
-        to: '/base/tabs',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Tooltips',
-        to: '/base/tooltips',
+        name: 'Danh sách thu thi',
+        to: '/admin/cost',
       },
     ],
   },
   {
     _tag: 'CSidebarNavDropdown',
-    name: 'Buttons',
-    route: '/buttons',
-    icon: 'cil-cursor',
+    name: 'Kho',
+    route: '/admin/warehouse',
+    icon: 'cil-house',
     _children: [
       {
         _tag: 'CSidebarNavItem',
-        name: 'Buttons',
-        to: '/buttons/buttons',
+        name: 'Danh sách kho',
+        to: '/admin/warehouse/manager',
       },
       {
         _tag: 'CSidebarNavItem',
-        name: 'Brand buttons',
+        name: 'Kiểm kê kho',
         to: '/buttons/brand-buttons',
       },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Buttons groups',
-        to: '/buttons/button-groups',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Dropdowns',
-        to: '/buttons/button-dropdowns',
-      }
     ],
   },
   {
-    _tag: 'CSidebarNavItem',
-    name: 'Charts',
-    to: '/charts',
-    icon: 'cil-chart-pie'
-  },
-  {
     _tag: 'CSidebarNavDropdown',
-    name: 'Icons',
-    route: '/icons',
-    icon: 'cil-star',
+    name: 'Sản phẩm',
+    route: '/admin/product',
+    icon: 'cil-gift',
     _children: [
       {
         _tag: 'CSidebarNavItem',
-        name: 'CoreUI Free',
-        to: '/icons/coreui-icons',
-        badge: {
-          color: 'success',
-          text: 'NEW',
-        },
+        name: 'Danh mục',
+        to: '/admin/product/category',
       },
       {
         _tag: 'CSidebarNavItem',
-        name: 'CoreUI Flags',
-        to: '/icons/flags',
+        name: 'Thêm sản phẩm',
+        to: '/admin/product/add',
       },
       {
         _tag: 'CSidebarNavItem',
-        name: 'CoreUI Brands',
-        to: '/icons/brands',
+        name: 'Tất cả sản phẩm',
+        to: '/admin/product/manager',
       },
     ],
   },
   {
     _tag: 'CSidebarNavDropdown',
-    name: 'Notifications',
+    name: 'Đơn hàng',
     route: '/notifications',
-    icon: 'cil-bell',
+    icon: 'cil-cart',
     _children: [
       {
         _tag: 'CSidebarNavItem',
-        name: 'Alerts',
-        to: '/notifications/alerts',
+        name: 'Tất cả đơn hàng',
+        to: '/admin/order',
       },
       {
         _tag: 'CSidebarNavItem',
-        name: 'Badges',
-        to: '/notifications/badges',
+        name: 'Khuyến mãi',
+        to: '/admin/order/sale',
       },
       {
         _tag: 'CSidebarNavItem',
-        name: 'Modal',
-        to: '/notifications/modals',
+        name: 'Vận chuyển',
+        to: '/admin/order/shipping',
+      },
+    ]
+  },
+  {
+    _tag: 'CSidebarNavDropdown',
+    name: 'Khách hàng',
+    route: '/admin/customer',
+    icon: 'cil-user',
+    _children: [
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Thêm mới',
+        to: '/admin/customer/new',
       },
       {
         _tag: 'CSidebarNavItem',
-        name: 'Toaster',
-        to: '/notifications/toaster'
-      }
+        name: 'Danh sách',
+        to: '/admin/customer/manager',
+      },
     ]
   },
   {
@@ -224,89 +136,31 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavTitle',
-    _children: ['Extras'],
+    _children: ['Thiết lập']
   },
   {
     _tag: 'CSidebarNavDropdown',
-    name: 'Pages',
-    route: '/pages',
-    icon: 'cil-star',
+    name: 'Người dùng',
+    route: '/admin/users',
+    icon: 'cil-money',
     _children: [
       {
         _tag: 'CSidebarNavItem',
-        name: 'Login',
-        to: '/login',
+        name: 'Vài trò',
+        to: '/admin/users',
       },
       {
         _tag: 'CSidebarNavItem',
-        name: 'Register',
-        to: '/register',
+        name: 'Set quyền',
+        to: '/admin/users/:id',
       },
       {
         _tag: 'CSidebarNavItem',
-        name: 'Error 404',
-        to: '/404',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Error 500',
-        to: '/500',
+        name: 'Danh sách',
+        to: '/admin/users',
       },
     ],
   },
-  {
-    _tag: 'CSidebarNavItem',
-    name: 'Disabled',
-    icon: 'cil-ban',
-    badge: {
-      color: 'secondary',
-      text: 'NEW',
-    },
-    addLinkClass: 'c-disabled',
-    'disabled': true
-  },
-  {
-    _tag: 'CSidebarNavDivider',
-    className: 'm-2'
-  },
-  {
-    _tag: 'CSidebarNavTitle',
-    _children: ['Labels']
-  },
-  {
-    _tag: 'CSidebarNavItem',
-    name: 'Label danger',
-    to: '',
-    icon: {
-      name: 'cil-star',
-      className: 'text-danger'
-    },
-    label: true
-  },
-  {
-    _tag: 'CSidebarNavItem',
-    name: 'Label info',
-    to: '',
-    icon: {
-      name: 'cil-star',
-      className: 'text-info'
-    },
-    label: true
-  },
-  {
-    _tag: 'CSidebarNavItem',
-    name: 'Label warning',
-    to: '',
-    icon: {
-      name: 'cil-star',
-      className: 'text-warning'
-    },
-    label: true
-  },
-  {
-    _tag: 'CSidebarNavDivider',
-    className: 'm-2'
-  }
 ]
 
 export default _nav
