@@ -17,7 +17,11 @@ use App\Http\Controllers\Api\UserController;
 Route::post('register', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
 
-Route::middleware('auth:api')->group(function(){
-    Route::get('/user', [UserController::class, 'show']);
-    Route::resource('products', ProductController::class);
+Route::prefix('v1')->group(function() {
+    Route::middleware('auth:api')->group(function(){
+        Route::post('logout', [UserController::class, 'logout']);
+        Route::get('/user', [UserController::class, 'show']);
+        Route::resource('products', ProductController::class);
+        
+    }); 
 });
