@@ -147,4 +147,12 @@ class UserController extends Controller
             'message' => 'Login fails, email or password is not correct !'
         ], 201);
     }
+
+    public function logout(Request $request) 
+    {
+        $request->user()->token()->revoke();
+        return response()->json([
+            'message' => 'Successfully logged out'
+        ]);
+    }
 }
