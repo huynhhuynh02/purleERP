@@ -9,8 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Http\Resources\ProductResource;
 use Illuminate\Support\Str;
-
-
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -19,11 +18,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $product = Product::paginate();
-
+        $id = Auth::id();
+        $product = Product::where('created_by', '=' , $id)->paginate();
         return ProductResource::collection($product);
     }
 
@@ -49,9 +48,12 @@ class ProductController extends Controller
             'id' => 'required|max:10|unique:products',
             'serial' => 'required|numeric',
             'name' => 'required|max:200',
+            'slug' => Str::slug($request->name),
             'cost_price' => 'required|numeric',
             'price' => 'required|numeric',
-            'created_by' => 'required|numeric',
+            'weight' => 'required|numeric',
+            'area' => 'required|numeric',
+            'stock' => 'required|numeric',
         ]);
 
         if($validator->fails()) {
@@ -61,7 +63,18 @@ class ProductController extends Controller
             ], 400);
         }
 
-        $product = Product::create($request->all());
+        $product = Product::create([
+            'id' => $request->id,
+            'serial' => $request->serial,
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'cost_price' => $request->cost_price,
+            'price' => $request->price,
+            'weight' => $request->weight,
+            'area' => $request->area,
+            'stock' => $request->stock,
+            'created_by' => Auth::id(),
+        ]);
         return response()->json([
             'status' => 200,
             'data' => $product
@@ -111,14 +124,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
         $validator = Validator::make($request->all(), [
             'serial' => 'required|max:10',
             'name' => 'required|max:200',
             'stock' => 'required|integer',
             'cost_price' => 'required|integer',
             'price' => 'required|integer',
-            'created_by' => 'required|integer',
+            'weight' => 'required|numeric',
+            'area' => 'required|numeric',
         ]);
 
         if($validator->fails()) {
@@ -127,15 +140,16 @@ class ProductController extends Controller
                 'errors' => $validator->errors() 
             ], 400);
         }
-
+        $user_id = Auth::id();
         $product = Product::find($id);
+        $product->id = $request->id;
         $product->serial = $request->serial;
         $product->name = $request->name;
         $product->slug = Str::slug($request->name);
         $product->cost_price = $request->cost_price;
         $product->price = $request->price;
         $product->stock = $request->stock;
-        $product->created_by = $request->created_by;
+        $product->created_by = $user_id;
         $product->save();
 
         return response()->json([

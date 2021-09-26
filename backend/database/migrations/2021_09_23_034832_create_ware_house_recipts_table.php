@@ -18,6 +18,7 @@ class CreateWareHouseReciptsTable extends Migration
             $table->string('title', 200);
             $table->decimal('total_price', $precision = 12, $scale = 2);
             $table->tinyInteger('type');
+            $table->text('remark')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('partner_id');
             $table->unsignedBigInteger('warehouse_id');

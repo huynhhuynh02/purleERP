@@ -11,8 +11,12 @@ class Product extends Model
 
     protected $primaryKey = 'id';
     
-    protected $fillable = ['id', 'serial', 'name', 'thumbnail', 'slug', 'price', 'cost_price', 'created_by'];
+    protected $fillable = ['id', 'serial', 'name', 'thumbnail', 'slug', 'price', 'cost_price', 'weight', 'area', 'stock', 'created_by'];
 
     public $incrementing = false;
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 }
