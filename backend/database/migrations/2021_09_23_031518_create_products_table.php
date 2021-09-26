@@ -18,9 +18,11 @@ class CreateProductsTable extends Migration
             $table->string('serial', 12);
             $table->string('name', 200);
             $table->string('slug', 200);
-            $table->string('thumbnail', 200);
+            $table->string('thumbnail', 200)->nullable();
             $table->decimal('cost_price', $precision = 12, $scale = 2);
             $table->decimal('price', $precision = 12, $scale = 2);
+            $table->decimal('weight', $precision = 12, $scale = 2);
+            $table->decimal('area', $precision = 12, $scale = 2);
             $table->text('excerpt')->nullable();
             $table->text('description')->nullable();
             $table->integer('stock')->default(0);
